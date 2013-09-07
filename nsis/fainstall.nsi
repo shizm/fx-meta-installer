@@ -1813,10 +1813,9 @@ Function CheckAdminPrivilege
 
     AccessControl::GetCurrentUserName
     Pop $0
-    AccessControl::IsUserTheAdministrator $0
+    AccessControl::NameToSid $0
     Pop $0
-    Pop $1
-    ${If} "$1" == "yes"
+    ${If} "$0" == "500"
       GoTo PRIVILEGE_TEST_DONE
     ${EndIf}
 
